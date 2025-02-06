@@ -1,0 +1,6 @@
+__pycache__
+src/model/logs
+src/model/NAM_logs
+.env
+*.bin
+src/experiments/logs
