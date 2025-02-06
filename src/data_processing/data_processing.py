@@ -1,3 +1,4 @@
+# python data_processing.py ../data/raw/cricsheet/ ../data/interim/ 6
 import os
 from cricstats import cricketstats
 import sys
@@ -178,8 +179,7 @@ def calculate_fantasy_points(df, match_type):
     return df
 
 
-json_data_dir = os.path.join(data_path, "all_json")
-file_paths = glob.glob(f"{json_data_dir}/*.json")
+file_paths = glob.glob(f"{data_path}/all_json/*.json")
 search = cricketstats.search(allplayers=True)
 
 with ProcessPoolExecutor(max_workers=num_threads) as executor:
@@ -190,13 +190,19 @@ combined_df = pd.concat(dfs, ignore_index=True)
 info_df = pd.read_csv(f"{data_path}/matches_info.csv")
 info_df['match_type'] = info_df['type'] + "-" + info_df['format']
 
+# ----------------- Filtering -----------------
+info_df = info_df[info_df['gender'] == 'male']
+# ---------------------------------------------
+
+
+info_df.to_csv(f"{output_dir}/matches_info.csv", index=False)
+
 # Select only the 'name', 'age', and 'address_email' columns from df2
 info_df = info_df[['match_id', 'match_type']]
 
 # Merge the dataframes on 'name'
-combined_df = pd.merge(combined_df, info_df, on='match_id', how='left')
+combined_df = pd.merge(combined_df, info_df, on='match_id', how='right')
 
-combined_df['Date'] = pd.to_datetime(combined_df['Date'])
 combined_df = combined_df.sort_values(by='Date')
 grouped = combined_df.groupby('format')
 

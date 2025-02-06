@@ -4,3 +4,5 @@ src/model/NAM_logs
 .env
 *.bin
 src/experiments/logs
+testing.*
+src/data/processed

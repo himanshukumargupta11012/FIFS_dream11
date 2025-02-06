@@ -1,11 +1,12 @@
-# python feature_engineering.py --input ../data/interim/combined_csvs/Test.csv --output_dir ./processed --window 15 --threads 8
+# python feature_engineering.py --input ../data/interim/Test.csv --output_dir ../data/processed --window 15 --threads 8
 
 
 import pandas as pd
-import concurrent.futures
+from concurrent.futures import ProcessPoolExecutor, as_completed
 import os
 import argparse
 import numpy as np
+from tqdm import tqdm
 
 pd.set_option('display.max_rows', None)  # Show all rows
 pd.set_option('display.max_columns', None)  # Show all columns
@@ -169,16 +170,13 @@ def calculate_player_stats_for_group(player_data, k=10):
 
 def calculate_player_stats(df, num_threads, k):
     df.rename(columns={df.columns[0]: 'player'}, inplace=True)
-    results = []
-    with concurrent.futures.ProcessPoolExecutor(max_workers=num_threads) as executor:
-        futures = {
-            executor.submit(calculate_player_stats_for_group, group, k): player
-            for player, group in df.groupby('player_id')
-        }
+    
+    with ProcessPoolExecutor(max_workers=num_threads) as executor:
         
-        for future in concurrent.futures.as_completed(futures):
-            result = future.result()
-            results.append(result)
+        groups = df.groupby('player_id')
+        results = list(tqdm(executor.map(calculate_player_stats_for_group, [group for _, group in groups], [k] * len(groups)), 
+                        total=len(groups), 
+                        desc="Processing Players"))
 
     new_df = pd.concat(results, axis=0)
     new_df = processing(new_df.copy(), k)
@@ -268,12 +266,12 @@ def main(input_file_path, output_dir, k, num_threads):
 
     # features for testing after 10th Nov
     new_df = new_df.sort_values(by=['player_id', 'date'], ascending=[True, False])
-    latest_matches_df = new_df.drop_duplicates(subset='player_id', keep='first').reset_index(drop=True)
+    # latest_matches_df = new_df.drop_duplicates(subset='player_id', keep='first').reset_index(drop=True)
 
     train_df.to_csv(os.path.join(output_dir, 'train',str(k) + "_" + input_file_name ), index=False)
     test_df.to_csv(os.path.join(output_dir, 'test', str(k) + "_" + input_file_name), index=False)
     new_df[new_df['date'] <= '2024-11-10'].to_csv(os.path.join(output_dir, 'combined', str(k) + "_" + input_file_name), index=False)
-    latest_matches_df.to_csv(os.path.join(output_dir, 'test_after10nov', str(k) + "_" + input_file_name), index=False)
+    # latest_matches_df.to_csv(os.path.join(output_dir, 'test_after10nov', str(k) + "_" + input_file_name), index=False)
 
 
 if __name__ == "__main__":

@@ -22,23 +22,25 @@ class MLPModel(nn.Module):
         return self.model(x)
 
 # Training function
-def train_model(model, train_loader, test_loader, args, game_format, should_save_best_model=False, device="cpu", save_dir="../model_artifacts"):
+def train_model(model, train_loader, test_loader, args, should_save_best_model=False, device="cpu", save_dir="../model_artifacts"):
     # Extract hyperparameters from args
     if isinstance(args, dict):
         k = args.get("k", None)
         num_epochs = args.get("e", 25)
         batch_size = args.get("batch_size", 32)
         lr = args.get("lr", 0.005)
+        data_file_name = args.get("f", None)
     else:
         k = args.k
         num_epochs = args.e
         batch_size = args.batch_size
         lr = args.lr
+        data_file_name = args.f
 
     criterion = nn.MSELoss()
     optimizer = optim.Adam(model.parameters(), lr=lr)
     best_loss = float('inf')
-    best_model_path = f"{save_dir}/{game_format}_k={k}_lr={lr}_e={num_epochs}_b={batch_size}_bestmodel.pth"
+    best_model_path = f"{save_dir}/{data_file_name}_k={k}_lr={lr}_e={num_epochs}_b={batch_size}_bestmodel.pth"
 
     best_model_state_dict = None
 
