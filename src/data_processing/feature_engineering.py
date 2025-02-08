@@ -1,4 +1,4 @@
-# python feature_engineering.py --input ../data/interim/Test.csv --output_dir ../data/processed --window 15 --threads 8
+# python feature_engineering.py --input ../data/interim/ODI.csv --output_dir ../data/processed --window 15 --threads 8
 
 
 import pandas as pd

@@ -6,3 +6,5 @@ src/model/NAM_logs
 src/experiments/logs
 testing.*
 src/data/processed
+src/data/raw/cricsheet
+src/data/interim

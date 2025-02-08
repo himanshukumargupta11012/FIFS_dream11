@@ -1,3 +1,5 @@
+# python data_download.py -m odis -o ../data/raw/cricsheet -t 16
+
 from concurrent.futures import ThreadPoolExecutor
 import requests
 import os
@@ -5,14 +7,19 @@ import sys
 import zipfile
 import pandas as pd
 import shutil
+import argparse
 
 # Check if the correct number of arguments are passed
-if len(sys.argv) != 4:
-    print("Usage: python3 data_download.py <match type> <output_dir> <num_threads>")
-    sys.exit(1)  # Exit the script with an error code
+parser = argparse.ArgumentParser(description='Download data from cricsheet.org')
+parser.add_argument('--match_type', '-m', type=str, help='Type of match to download', default='all_json')
+parser.add_argument('--output_dir', '-o', type=str, help='Output directory to store the data', required=True)
+parser.add_argument('--num_threads', '-t', type=int, help='Number of threads to use for downloading', default=4)
 
-_, match_type, output_dir, num_threads = sys.argv
-num_threads = int(num_threads)
+args = parser.parse_args()
+
+match_type = args.match_type
+output_dir = args.output_dir
+num_threads = args.num_threads
 
 data_url = f"https://cricsheet.org/downloads/{match_type}_json.zip"
 people_url = "https://cricsheet.org/register/people.csv"
@@ -81,4 +88,5 @@ df = pd.DataFrame(match_data, columns=["date", "type", "format", "gender", "matc
 df['date'] = pd.to_datetime(df['date'])
 df.to_csv(f"{output_dir}/matches_info.csv", index=False)
 
-shutil.move(readme_path, output_dir)
+
+shutil.move(readme_path, os.path.join(output_dir, "README.txt"))

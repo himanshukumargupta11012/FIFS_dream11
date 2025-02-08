@@ -1,4 +1,4 @@
-# python mlp_baseline_final.py -f "15_ODI" -k 15 -e 20 -dim 128 -batch_size 1024 -lr 0.005
+# python mlp_baseline_final.py -f 15_ODI -k 15 -e 20 -dim 128 -batch_size 1024 -lr 0.005
 
 import torch
 import torch.nn as nn
@@ -11,7 +11,6 @@ import argparse
 from feature_utils import process, compute_overlap_true_test, compute_loss, normalise_data
 from sklearn.metrics import mean_squared_error
 import pickle
-from sklearn.preprocessing import MinMaxScaler, StandardScaler
 
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -50,8 +49,8 @@ def MLP_train(args):
     X_test = scaler_X.transform(X_test)
     y_test = scaler_y.transform(y_test.reshape(-1, 1)).flatten()
 
-    input_features = X_train.shape[1]
-    full_model = MLPModel(input_features=input_features, hidden_units=dim).to(device)
+    num_input_features = X_train.shape[1]
+    full_model = MLPModel(input_features=num_input_features, hidden_units=dim).to(device)
 
     X_train_tensor = torch.tensor(X_train, dtype=torch.float32)
     y_train_tensor = torch.tensor(y_train, dtype=torch.float32).view(-1, 1)
@@ -66,7 +65,7 @@ def MLP_train(args):
     test_loader = DataLoader(test_dataset, batch_size=batch_size)
 
     test_model(full_model, test_loader, device=device)
-    model = train_model(full_model, train_loader, test_loader, args, should_save_best_model=False,device=device)
+    model = train_model(full_model, train_loader, test_loader, args, should_save_best_model=False, device=device)
     torch.save(model.state_dict(), f"../model_artifacts/{data_file_name}_model.pth")
 
     test_predictions = test_model(model, test_loader, device=device)
