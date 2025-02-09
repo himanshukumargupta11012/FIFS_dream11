@@ -21,6 +21,8 @@ match_type = args.match_type
 output_dir = args.output_dir
 num_threads = args.num_threads
 
+os.makedirs(output_dir, exist_ok=True)
+
 data_url = f"https://cricsheet.org/downloads/{match_type}_json.zip"
 people_url = "https://cricsheet.org/register/people.csv"
 name_url = "https://cricsheet.org/register/names.csv"

@@ -2673,6 +2673,8 @@ class search:
 
         players_list = []
         id_dict = match["info"]["registry"]["people"]
+        toss_winner = match["info"]["toss"]["winner"]
+        winner_inning = 1 if match["info"]["toss"]["decision"] == "bat" else 2
         if self.allplayers==True:
             for eachteam in match["info"]["players"]:
                 players_list.extend(match["info"]["players"][eachteam])
@@ -2684,6 +2686,10 @@ class search:
                         # search.addplayerstoresult(self, eachplayer, playerindex)
                     else:
                         df.loc[df['Players'] == eachplayer, 'Team'] = eachteam
+                        if eachteam == toss_winner:
+                            df.loc[df['Players'] == eachplayer, 'Inning'] = winner_inning - 1
+                        else:
+                            df.loc[df['Players'] == eachplayer, 'Inning'] = 2 - winner_inning
                         df.loc[df['Players'] == eachplayer, 'Opposition'] = opposition
 
         df = df[df['Players'].isin(players_list)]

@@ -12,6 +12,7 @@ from feature_utils import process, compute_overlap_true_test, compute_loss, norm
 from sklearn.metrics import mean_squared_error
 import pickle
 
+torch.manual_seed(0)
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(device)
@@ -50,6 +51,7 @@ def MLP_train(args):
     y_test = scaler_y.transform(y_test.reshape(-1, 1)).flatten()
 
     num_input_features = X_train.shape[1]
+    print(num_input_features)
     full_model = MLPModel(input_features=num_input_features, hidden_units=dim).to(device)
 
     X_train_tensor = torch.tensor(X_train, dtype=torch.float32)

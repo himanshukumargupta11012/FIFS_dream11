@@ -25,8 +25,10 @@ FEATURES = [
     "Stumpings", "Catches", "direct run_outs", "indirect run_outs"
 ]
 
-specifics_features = ["Runs", "Wickets", "Innings Batted", "Innings Bowled"]
-specifics = ["Venue", "Opposition", "match_type"]
+specifics_features = ["Runs", "Wickets"
+# , "Innings Batted", "Innings Bowled", "Games"
+]
+specifics = ["Venue", "Opposition", "match_type", "Inning"]
 
 cumulative_columns = [
     ("cumulative_derived_Dot Ball%", "cumulative_Dot Balls_sum", "cumulative_Balls Faced_sum"),
@@ -44,7 +46,7 @@ cumulative_columns = [
 ]
 last_k_columns = []
 
-def calculate_opponent_venue_rolling_avgs(player_data, new_player_data, features, specifics, k):
+def calculate_group_type_rolling_avgs(player_data, new_player_data, features, specifics, k):
     for specific in specifics:
         specific_group = player_data.groupby(['player', specific])
         new_player_data[f'{specific}_total_matches_sum'] = specific_group["Games"].shift(1).cumsum()
@@ -78,6 +80,9 @@ def calculate_player_stats_for_group(player_data, k=10):
     # new_player_data["bowling_fantasy_points"] = player_data["bowling_fantasy_points"]
     # new_player_data["fielding_fantasy_points"] = player_data["fielding_fantasy_points"]
     new_player_data["Total_matches_played_sum"] = player_data["Games"].shift(1).cumsum()
+    new_player_data["inning"] = player_data["Inning"]
+    new_player_data["year"] = player_data["Date"].dt.year - 2025
+
     for col in FEATURES:
         shifted_data = player_data[col].shift(1)
         new_player_data[f'cumulative_{col}_sum'] = shifted_data.cumsum()
@@ -93,8 +98,6 @@ def calculate_player_stats_for_group(player_data, k=10):
     new_player_data[f"last_{k}_matches_4wickets_sum"] = ((player_data["Wickets"] >= 4) & (player_data["Wickets"] < 5)).astype(int).shift(1).rolling(k, min_periods=1).sum()
     new_player_data[f"last_{k}_matches_5wickets_sum"] = (player_data["Wickets"] >= 5).astype(int).shift(1).rolling(k, min_periods=1).sum()
 
-    # Set the date as the index
-    player_data['Date'] = pd.to_datetime(player_data['Date'])
     # player_data.set_index('Date', inplace=True)
 
 
@@ -164,7 +167,7 @@ def calculate_player_stats_for_group(player_data, k=10):
     # Create a copy of the updated DataFrame
     new_player_data = new_player_data.copy()
 
-    new_player_data = calculate_opponent_venue_rolling_avgs(player_data, new_player_data, specifics_features, specifics, k)
+    new_player_data = calculate_group_type_rolling_avgs(player_data, new_player_data, specifics_features, specifics, k)
 
     return new_player_data
 
@@ -255,6 +258,7 @@ def processing(df, k):
 
 def main(input_file_path, output_dir, k, num_threads):
     df = pd.read_csv(input_file_path)
+    df['Date'] = pd.to_datetime(df['Date'])
     new_df = calculate_player_stats(df, num_threads, k)
     input_file_name = os.path.splitext(os.path.basename(input_file_path))[0] + '.csv'
 

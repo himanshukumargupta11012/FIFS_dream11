@@ -18,6 +18,8 @@ if len(sys.argv) != 4:
 _, data_path, output_dir, num_threads = sys.argv
 num_threads = int(num_threads)
 
+os.makedirs(output_dir, exist_ok=True)
+
 
 def generate_df(file_path):
     
