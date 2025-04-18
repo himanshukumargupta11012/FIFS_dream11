@@ -1,0 +1,23 @@
+Credits,Player Type,Player Name,Team,IsPlaying,lineupOrder,identifier,name,fantasy_points
+8.5,ALL,Hardik Pandya,IND,PLAYING,7,dbe50b21,HH Pandya,61
+8.0,ALL,Axar Patel,IND,PLAYING,5,2e171977,AR Patel,61
+8.0,ALL,Ravindra Jadeja,IND,PLAYING,8,fe93fd9d,RA Jadeja,61
+8.5,ALL,Mehidy Hasan Miraz,BAN,PLAYING,6,c58b0108,Mehedi Hasan Miraz,61
+6.5,ALL,Rishad- Hossain,BAN,PLAYING,8,5935d694,Rishad Hossain,61
+7.5,WK,Lokesh Rahul,IND,PLAYING,6,b17e2f24,KL Rahul,61
+6.5,WK,Jaker Ali Anik,BAN,PLAYING,7,cd56a813,Jaker Ali,99
+8.0,WK,Mushfiqur Rahim,BAN,PLAYING,5,a94e08ea,Mushfiqur Rahim,61
+8.5,BAT,Shubman Gill,IND,PLAYING,2,b4b99816,Shubman Gill,61
+8.0,BAT,Shreyas Iyer,IND,PLAYING,4,85ec8e33,SS Iyer,95
+9.0,BAT,Virat Kohli,IND,PLAYING,3,ba607b88,V Kohli,61
+9.0,BAT,Rohit Sharma,IND,PLAYING,1,740742ef,RG Sharma,61
+7.0,BAT,Tanzid Hasan,BAN,PLAYING,1,80fe764d,Tanzid Hasan,61
+7.5,BAT,Tawhid Hridoy,BAN,PLAYING,4,9e52a414,Towhid Hridoy,61
+8.0,BAT,Najmul Hossain Shanto,BAN,PLAYING,3,1274d7ab,Nazmul Hossain Shanto,63
+7.0,BAT,Soumya Sarkar,BAN,PLAYING,2,4d9f9686,Soumya Sarkar,96
+6.5,BOWL,Harshit Rana,IND,PLAYING,9,77b1aa15,Harshit Rana,114
+8.0,BOWL,Kuldeep Yadav,IND,PLAYING,11,8d2c70ad,Kuldeep Yadav,61
+8.5,BOWL,Mohammed Shami,IND,PLAYING,10,8cf9814c,Mohammed Shami,61
+7.0,BOWL,Tanzim Sakib,BAN,PLAYING,9,0b0cc297,Tanzim Hasan Sakib,61
+8.0,BOWL,Mustafizur Rahman,BAN,PLAYING,11,0a8fce53,Mustafizur Rahman,61
+8.5,BOWL,Taskin Ahmed,BAN,PLAYING,10,ef18b66e,Taskin Ahmed,61

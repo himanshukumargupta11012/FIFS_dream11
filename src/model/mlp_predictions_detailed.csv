@@ -1,0 +1,23 @@
+Credits,Player Type,Player Name,Team,IsPlaying,lineupOrder,identifier,name,player_id,match_id,fantasy_points,bat_points,bowl_points,wick_points,field_points,runs,fours,sixes,balls_faced,balls_bowled,maidens,dot_balls,runs_given,wickets,bonus_wickets,catches,stumpings,direct_runouts,indirect_runouts
+8.5,ALL,Hardik Pandya,IND,PLAYING,7,dbe50b21,HH Pandya,dbe50b21,1234567890,30,20,10,0,0,19,1,0,23,38,0,20,20,0,0,0,0,0,0
+8.0,ALL,Axar Patel,IND,PLAYING,5,2e171977,AR Patel,2e171977,1234567890,31,20,11,0,0,19,1,0,23,45,0,23,20,0,0,0,0,0,0
+8.0,ALL,Ravindra Jadeja,IND,PLAYING,8,fe93fd9d,RA Jadeja,fe93fd9d,1234567890,31,20,11,0,0,19,1,0,23,48,0,22,20,0,0,0,0,0,0
+8.5,ALL,Mehidy Hasan Miraz,BAN,PLAYING,6,c58b0108,Mehedi Hasan Miraz,c58b0108,1234567890,35,20,15,0,0,19,1,0,31,54,0,29,20,0,0,0,0,0,0
+6.5,ALL,Rishad- Hossain,BAN,PLAYING,8,5935d694,Rishad Hossain,5935d694,1234567890,56,20,11,25,0,19,1,0,23,43,0,21,20,1,0,0,0,0,0
+7.5,WK,Lokesh Rahul,IND,PLAYING,6,b17e2f24,KL Rahul,b17e2f24,1234567890,32,20,4,0,8,19,1,0,27,23,0,12,20,0,0,1,0,0,0
+6.5,WK,Jaker Ali Anik,BAN,PLAYING,7,cd56a813,Jaker Ali,cd56a813,1234567890,24,20,4,0,0,19,1,0,35,23,0,12,20,0,0,0,0,0,0
+8.0,WK,Mushfiqur Rahim,BAN,PLAYING,5,a94e08ea,Mushfiqur Rahim,a94e08ea,1234567890,24,20,4,0,0,19,1,0,38,23,0,12,20,0,0,0,0,0,0
+8.5,BAT,Shubman Gill,IND,PLAYING,2,b4b99816,Shubman Gill,b4b99816,1234567890,22,18,4,0,0,19,1,0,42,23,0,12,20,0,0,0,0,0,0
+8.0,BAT,Shreyas Iyer,IND,PLAYING,4,85ec8e33,SS Iyer,85ec8e33,1234567890,32,20,4,0,8,19,1,0,28,23,0,12,20,0,0,1,0,0,0
+9.0,BAT,Virat Kohli,IND,PLAYING,3,ba607b88,V Kohli,ba607b88,1234567890,22,18,4,0,0,19,1,0,47,23,0,12,20,0,0,0,0,0,0
+9.0,BAT,Rohit Sharma,IND,PLAYING,1,740742ef,RG Sharma,740742ef,1234567890,22,18,4,0,0,19,1,0,42,23,0,12,20,0,0,0,0,0,0
+7.0,BAT,Tanzid Hasan,BAN,PLAYING,1,80fe764d,Tanzid Hasan,80fe764d,1234567890,24,20,4,0,0,19,1,0,33,23,0,12,20,0,0,0,0,0,0
+7.5,BAT,Tawhid Hridoy,BAN,PLAYING,4,9e52a414,Towhid Hridoy,9e52a414,1234567890,24,20,4,0,0,19,1,0,37,23,0,12,20,0,0,0,0,0,0
+8.0,BAT,Najmul Hossain Shanto,BAN,PLAYING,3,1274d7ab,Nazmul Hossain Shanto,1274d7ab,1234567890,24,20,4,0,0,19,1,0,36,23,0,12,20,0,0,0,0,0,0
+7.0,BAT,Soumya Sarkar,BAN,PLAYING,2,4d9f9686,Soumya Sarkar,4d9f9686,1234567890,24,20,4,0,0,19,1,0,23,23,0,12,20,0,0,0,0,0,0
+6.5,BOWL,Harshit Rana,IND,PLAYING,9,77b1aa15,Harshit Rana,77b1aa15,1234567890,32,20,12,0,0,19,1,0,23,43,0,24,20,0,0,0,0,0,0
+8.0,BOWL,Kuldeep Yadav,IND,PLAYING,11,8d2c70ad,Kuldeep Yadav,8d2c70ad,1234567890,35,20,15,0,0,19,1,0,23,51,0,27,20,0,0,0,0,0,0
+8.5,BOWL,Mohammed Shami,IND,PLAYING,10,8cf9814c,Mohammed Shami,8cf9814c,1234567890,31,20,11,0,0,19,1,0,23,40,0,22,20,0,0,0,0,0,0
+7.0,BOWL,Tanzim Sakib,BAN,PLAYING,9,0b0cc297,Tanzim Hasan Sakib,0b0cc297,1234567890,60,20,15,25,0,19,1,0,23,49,0,27,20,1,0,0,0,0,0
+8.0,BOWL,Mustafizur Rahman,BAN,PLAYING,11,0a8fce53,Mustafizur Rahman,0a8fce53,1234567890,57,20,12,25,0,19,1,0,23,45,0,26,20,1,0,0,0,0,0
+8.5,BOWL,Taskin Ahmed,BAN,PLAYING,10,ef18b66e,Taskin Ahmed,ef18b66e,1234567890,60,20,15,25,0,19,1,0,23,51,0,28,20,1,0,0,0,0,0

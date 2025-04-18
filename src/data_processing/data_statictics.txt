@@ -7,3 +7,13 @@ total players: {27: 1733,
          24: 2,
          31: 1,
          23: 1}
+
+44 people dont have cricinfo id
+
+
+56d0ab23
+d0a98a96
+67b5bb60
+2864ee42
+945f5357
+14b38bfe
