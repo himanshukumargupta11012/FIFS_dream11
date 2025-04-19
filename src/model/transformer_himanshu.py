@@ -1,4 +1,4 @@
-# python mlp_baseline_final_himanshu.py -f 7_final -e 20 -dim 128 -batch_size 1024 -lr 0.005 -model_name test
+# python transformer_himanshu.py -f 7_final -e 20 -dim 128 -batch_size 1024 -lr 0.005 -model_name test
 
 from sklearn.discriminant_analysis import StandardScaler
 import torch
@@ -9,10 +9,7 @@ import os
 from model_utils import MLPModel, train_classifier_model, WeightedMSELoss, PlayerSelectorTransformer, evaluate_classifier_model, MLPClassifier
 import argparse
 from feature_utils import process, compute_overlap_true_test, compute_loss, normalise_data, classification_process
-from sklearn.metrics import mean_squared_error, mean_absolute_error
 import pickle
-import matplotlib.pyplot as plt
-import numpy as np
 from torch import optim
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -52,7 +49,7 @@ def MLP_train(args):
 
     # ------------- Data split -------------
     start_date = pd.to_datetime("2010-01-01")
-    split_date = pd.to_datetime("2023-10-19")
+    split_date = pd.to_datetime("2025-10-19")
     # split_date = pd.to_datetime(pd.Timestamp.today().strftime("%Y-%m-%d"))
     end_date = pd.to_datetime("2025-10-05")
 
@@ -65,7 +62,6 @@ def MLP_train(args):
     is_mlp = False
     X_train, y_train, _ = classification_process(train_df, k, is_mlp=is_mlp)
     X_test, y_test, _ = classification_process(test_df, k, is_mlp=is_mlp)
-    
 
     scaler_X = StandardScaler()
     if len(X_train.shape) == 3:
@@ -77,8 +73,9 @@ def MLP_train(args):
     else:
         X_train = scaler_X.fit_transform(X_train)
         X_train = torch.from_numpy(X_train).to(torch.float32)
+
     
-    save_path = f'{current_dir}/../model_artifacts/transformer_{args.model_name}_d-{data_file_name}_sd-{start_date.strftime("%Y-%m-%d")}_ed-{split_date.strftime("%Y-%m-%d")}'
+    save_path = f'{current_dir}/../model_artifacts/{args.model_name}_d-{data_file_name}_sd-{start_date.strftime("%Y-%m-%d")}_ed-{split_date.strftime("%Y-%m-%d")}'
 
     scalers_dict[f"x"] = scaler_X
     with open(f'{save_path}_scalers.pkl', 'wb') as file:

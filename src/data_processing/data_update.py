@@ -101,7 +101,8 @@ if __name__ == "__main__":
     # Remove old data if --new flag is set
     if args.new:
         shutil.rmtree(json_dir, ignore_errors=True)
-        os.remove(prev_readme_path)
+        if os.path.exists(prev_readme_path):
+            os.remove(prev_readme_path, ignore_errors=True)
 
     os.makedirs(json_dir, exist_ok=True)
     os.makedirs(temp_json_dir, exist_ok=True)

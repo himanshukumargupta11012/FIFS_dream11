@@ -170,7 +170,7 @@ def process_dfs(df, type="all"):
     grouped_df = df.groupby('format')
 
     for name, group in grouped_df:
-        group.to_csv(f"{output_dir}/{name}_{type}.csv", index=False)
+        group.to_csv(f"{output_dir}/{type}.csv", index=False)
 
 if __name__ == "__main__":
 

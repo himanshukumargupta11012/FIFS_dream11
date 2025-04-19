@@ -1,5 +1,4 @@
-# python feature_engineering.py --input ../data/interim/ODI_all.csv --output_dir ../data/processed --window 7 --threads 24 --output_file himanshu
-# python feature_engineering.py --input ../data/interim/ODI_all.csv --output_dir ../data/processed --window 6 --threads 24 --output_file ODI
+# python feature_engineering.py --input_dir ../data/interim/ipl --output_dir ../data/processed --window 7 --threads 24 --output_file IPL
 import pandas as pd
 from concurrent.futures import ProcessPoolExecutor
 import os
@@ -276,13 +275,13 @@ def processing(df, k):
     return df
 
 
-def main(input_file_path, output_dir, k, output_file_name, num_threads):
+def main(input_dir, output_dir, k, output_file_name, num_threads):
     global pvp_df, main_df
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    pvp_df = pd.read_csv(os.path.join(current_dir, "..", "data", "interim", "ODI_pvp.csv"))
+    pvp_df = pd.read_csv(os.path.join(input_dir, "pvp.csv"))
     pvp_df["date"] = pd.to_datetime(pvp_df["date"])
 
-    main_df = pd.read_csv(input_file_path)
+    main_df = pd.read_csv(os.path.join(input_dir, "all.csv"))
     main_df['date'] = pd.to_datetime(main_df['date'])
     
     new_df = calculate_player_stats(main_df, num_threads, k)
@@ -304,8 +303,8 @@ def main(input_file_path, output_dir, k, output_file_name, num_threads):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Calculate player stats with rolling averages")
     parser.add_argument(
-        '-i', '--input', type=str, required=True, 
-        help='Path to the input CSV file'
+        '-i', '--input_dir', type=str, required=True, 
+        help='Path to the data folder'
     )
     parser.add_argument(
         '-o', '--output_dir', type=str, required=True, 
@@ -324,4 +323,4 @@ if __name__ == "__main__":
         help='Output file name'
     )
     args = parser.parse_args()
-    main(args.input, args.output_dir, args.window, args.output_file, args.threads)
+    main(args.input_dir, args.output_dir, args.window, args.output_file, args.threads)
