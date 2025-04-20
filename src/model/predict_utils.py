@@ -5,6 +5,7 @@ import torch
 from datetime import datetime
 import os, sys
 from argparse import Namespace
+from googlesearch import search
 
 current_file_path = os.path.abspath(__file__)
 current_dir = os.path.dirname(current_file_path)
@@ -16,6 +17,46 @@ from feature_engineering import calculate_player_stats
 from feature_engineering_charan import calculate_player_stats as calculate_player_stats_charan
 from feature_utils import classification_process
 from ensemble_final import load_and_test_model
+
+
+
+def get_espncricinfo_link(row):
+    if row["Player Name"] == "Andre Siddharth":
+        row["Player Name"] = "Andre Siddarth"
+    if row["Team"] == "CHE":
+        row["Team"] = "CSK"
+
+    query = f"{row['Player Name']} profile ESPNcricinfo {row['Team']}"
+    try:
+        search_result = search(query, sleep_interval=20, num_results=10, lang="en", timeout=10)
+        for link in search_result:
+            if "espncricinfo.com" in link:
+                return link
+            
+        print(f"Could not find ESPNcricinfo link for {row['Player Name']}.")
+        return None
+
+    except Exception as e:
+        print(f"Error searching for {row['Player Name']}: {e}. Please try again.")
+        return None
+    
+def get_espncricinfo_number(link):
+    return int(link.split("-")[-1]) if link else None
+
+def get_players_info(df, progress=False):
+    new_df = df.copy()
+    if progress:
+        new_df["ESPNcricinfo Link"] = df.progress_apply(get_espncricinfo_link, axis=1)
+    else:
+        new_df["ESPNcricinfo Link"] = new_df.apply(get_espncricinfo_link, axis=1)
+
+    new_df['key_cricinfo'] = new_df['ESPNcricinfo Link'].apply(get_espncricinfo_number)
+    new_df["key_cricinfo"] = new_df["key_cricinfo"].astype("Int64")
+
+    all_players_df = pd.read_csv(f"{current_dir}/../data/raw/cricsheet/people.csv").dropna(subset=["key_cricinfo"])
+    players_df = pd.merge(new_df[["Credits", "Player Type", "Player Name", "Team", "key_cricinfo"]], all_players_df[["identifier", "key_cricinfo", "name"]], on="key_cricinfo", how="left")
+
+    return players_df
 
 
 teams_shortform = {
@@ -255,15 +296,14 @@ def forward_himanshu(model, scalers_dict, date, players_df, venue, toss_result, 
     vice_captain = top_players.iloc[1]
 
 
-    output_df = team[["Player Name", "Team"]]
+    output_df = team[["Player Name", "Team"]].copy()
     output_df["C/VC"] = "NA"
 
     # Assign roles
     output_df.loc[output_df["Player Name"] == captain["Player Name"], "C/VC"] = "C"
     output_df.loc[output_df["Player Name"] == vice_captain["Player Name"], "C/VC"] = "VC"
 
-    output_df.to_csv("hack-et_keepers_output.csv", index=False)
-
+    output_df.to_csv("yorker_yodas_output.csv", index=False)
     print(output_df)
 
 
@@ -316,7 +356,7 @@ def forward_charan(date, players_df, venue, toss_result, k, device):
     vice_captain = top_players.iloc[1]
 
 
-    output_df = team[["Player Name", "Team"]]
+    output_df = team[["Player Name", "Team"]].copy()
     output_df["C/VC"] = "NA"
 
     # Assign roles

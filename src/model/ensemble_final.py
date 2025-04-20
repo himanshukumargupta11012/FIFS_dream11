@@ -42,10 +42,6 @@ def load_and_test_model(args, match_df, device):
 
     print(f"Using ensemble weights: MLP={args.mlp_weight:.2f}, LGBM={args.lgbm_weight:.2f}")
 
-    
-
-    # --- Data Loading and Processing ---
-    # match_df = pd.read_csv(args.match_data_file)
 
 
     # Keep track of original identifiers AND the tie-breaker feature
@@ -117,7 +113,6 @@ def load_and_test_model(args, match_df, device):
     # --- Convert to Integer Predictions ---
     ensemble_preds_int = np.round(ensemble_preds).astype(int)
 
-    print(ensemble_preds_int)
     return ensemble_preds_int
 
     # --- Sort with Tie-breaking ---

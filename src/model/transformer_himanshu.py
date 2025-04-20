@@ -1,4 +1,4 @@
-# python transformer_himanshu.py -f 7_final -e 20 -dim 128 -batch_size 1024 -lr 0.005 -model_name test
+# python transformer_himanshu.py -f 7_IPL -e 20 -dim 128 -batch_size 16 -lr 0.0005 -model_name test
 
 from sklearn.discriminant_analysis import StandardScaler
 import torch
@@ -49,7 +49,7 @@ def MLP_train(args):
 
     # ------------- Data split -------------
     start_date = pd.to_datetime("2010-01-01")
-    split_date = pd.to_datetime("2025-10-19")
+    split_date = pd.to_datetime("2025-05-01")
     # split_date = pd.to_datetime(pd.Timestamp.today().strftime("%Y-%m-%d"))
     end_date = pd.to_datetime("2025-10-05")
 
@@ -110,7 +110,7 @@ def MLP_train(args):
         full_model = PlayerSelectorTransformer(embed_dim=num_input_features, transformer_dim=num_input_features, num_heads=1, num_layers=2).to(device)
 
     criterion = nn.BCELoss()
-    optimizer = optim.AdamW(full_model.parameters(), lr=args.lr, weight_decay=1e-1)
+    optimizer = optim.AdamW(full_model.parameters(), lr=args.lr, weight_decay=1e-2)
     model = train_classifier_model(full_model, train_loader, test_loader, optimizer, criterion, args, should_save_best_model=False, device=device)
     
     # Save the model
