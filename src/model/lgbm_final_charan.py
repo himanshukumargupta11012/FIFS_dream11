@@ -27,7 +27,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # ----- Hardcoded Hyperparameters -----
-    output_dir = "./lgbm_fixed_output"
+    output_dir = "./lgbm_fixed_output_2"
     use_log1p_target = True # Set based on your findings (True/False)
 
     lgbm_params = {
@@ -43,7 +43,7 @@ if __name__ == "__main__":
         # --- Fixed ---
         'objective': 'regression_l1', # MAE loss. Change to 'regression' for MSE if needed
         'metric': 'mae',              # Monitor MAE during training (internal, not used for early stopping here)
-        'n_estimators': 1500,         # Number of boosting rounds (fixed, no early stopping)
+        'n_estimators': 2000,         # Number of boosting rounds (fixed, no early stopping)
         'boosting_type': 'gbdt',
         'n_jobs': 1,                 # Use all available cores
         'seed': 42,

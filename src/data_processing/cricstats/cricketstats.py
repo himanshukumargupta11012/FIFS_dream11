@@ -2507,6 +2507,12 @@ class search:
         search.cleanup(self)
         # print(f'Time after transpose(): {time.time() - start}')
         df = df.T
+        
+        # if match["info"]["venue"] == "MA Chidambaram Stadium, Chepauk":
+        #     df["Venue"] = "MA Chidambaram Stadium, Chepauk, Chennai"
+        # elif match["info"]["venue"] == "Rajiv Gandhi International Stadium, Uppal":
+        #     df["Venue"] = "Rajiv Gandhi International Stadium, Uppal, Hyderabad"
+        # else:
         df["Venue"] = match["info"]["venue"]
 
         players_list = []

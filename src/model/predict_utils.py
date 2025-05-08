@@ -335,17 +335,17 @@ def forward_charan(date, players_df, venue, toss_result, k, device):
 
 
     interim_df2 = pd.concat([interim_df, df], ignore_index=True)
-
-    processed_df2 = calculate_player_stats_charan(interim_df2, 16, k)
+    
+    processed_df2 = calculate_player_stats(interim_df2, 16, k)
     processed_df2 = processed_df2[processed_df2["match_id"] == match_id]
 
 
-    args = Namespace(mlp_model_path=f"{current_dir}/mlp_fixed_output/mlp_k{k}_final_model.pth", lgbm_model_path=f"{current_dir}/../model/lgbm_fixed_output/lgbm_k{k}_final_model.joblib", scalers_path=f"{current_dir}/../model/mlp_fixed_output/mlp_k{k}_scalers.pkl", feature_names_path=f"{current_dir}/../model/lgbm_fixed_output/lgbm_k{k}_feature_names.pkl", k=k, device=device, mlp_weight=0.5, lgbm_weight=0.5)
+    args = Namespace(mlp_model_path=f"{current_dir}/../mlp_fixed_output/mlp_k{k}_final_model.pth", lgbm_model_path=f"{current_dir}/../lgbm_fixed_output/lgbm_k{k}_final_model.joblib", scalers_path=f"{current_dir}/../mlp_fixed_output/mlp_k{k}_scalers.pkl", feature_names_path=f"{current_dir}/../lgbm_fixed_output/lgbm_k{k}_feature_names.pkl", k=k, device=device, mlp_weight=0.5, lgbm_weight=0.5)
     output = load_and_test_model(args, processed_df2, device)
 
     players_df["fantasy_points"] = output
 
-    players_df["prev_fantasy_points"] = processed_df2[f"cumulative_fantasy_points_mean"].values
+    players_df["prev_fantasy_points"] = processed_df2[f"last_7_matches_fantasy_points_sum"].values
 
     team = select_team(None, players_df, "prev_fantasy_points")
 

@@ -60,12 +60,13 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Predict player scores for a match')
     parser.add_argument('--input_path', type=str, help='Path to the input file containing player data', default=None)
     parser.add_argument('--model_name', type=str, help='Name of the model to be used for prediction')
+    parser.add_argument('--k',required= True,type=int)
     parser.add_argument('--ensemble', type=bool, default=False)
     args = parser.parse_args()
 
     threshold_time = time(18, 0)  # 6 PM
 
-    k = 7
+    k = args.k
     playing_11 = True
 
     print(f"Is ensemble: {args.ensemble}")

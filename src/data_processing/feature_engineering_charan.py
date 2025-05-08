@@ -374,6 +374,7 @@ def main(input_file_path, output_dir, k, output_file_name, num_threads):
     full_output_file_name = f"{k}_{output_file_name}.csv"
     # train_df.to_csv(os.path.join(output_dir, 'train', full_output_file_name), index=False)
     # test_df.to_csv(os.path.join(output_dir, 'test', full_output_file_name), index=False)
+    print(new_df.shape)
     new_df.to_csv(os.path.join(output_dir, 'combined', full_output_file_name), index=False)
 
 

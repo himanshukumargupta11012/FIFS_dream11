@@ -48,14 +48,15 @@ def MLP_train(args):
     combined_df["date"] = pd.to_datetime(combined_df["date"])
 
     # ------------- Data split -------------
-    start_date = pd.to_datetime("2010-01-01")
-    split_date = pd.to_datetime("2025-05-01")
-    # split_date = pd.to_datetime(pd.Timestamp.today().strftime("%Y-%m-%d"))
-    end_date = pd.to_datetime("2025-10-05")
+    train_start_date = pd.to_datetime("2000-01-01")
+    train_end_date = pd.to_datetime("2025-05-01")
+    test_start_date = pd.to_datetime("2025-03-20")
+    test_end_date = pd.to_datetime("2025-10-05")
 
 
-    train_df = combined_df[(combined_df["date"] >= start_date) & (combined_df["date"] <= split_date)]
-    test_df = combined_df[(combined_df["date"] > split_date) & (combined_df["date"] <= end_date)]
+
+    train_df = combined_df[(combined_df["date"] >= train_start_date) & (combined_df["date"] <= train_end_date)]
+    test_df = combined_df[(combined_df["date"] > test_start_date) & (combined_df["date"] <= test_end_date)]
     print(train_df.shape, test_df.shape)
     # --------------------------------------
 
@@ -75,7 +76,7 @@ def MLP_train(args):
         X_train = torch.from_numpy(X_train).to(torch.float32)
 
     
-    save_path = f'{current_dir}/../model_artifacts/{args.model_name}_d-{data_file_name}_sd-{start_date.strftime("%Y-%m-%d")}_ed-{split_date.strftime("%Y-%m-%d")}'
+    save_path = f'{current_dir}/../model_artifacts/{args.model_name}_d-{data_file_name}_sd-{train_start_date.strftime("%Y-%m-%d")}_ed-{train_end_date.strftime("%Y-%m-%d")}_k-{args.k}_bs-{args.batch_size}_lr-{args.lr}'
 
     scalers_dict[f"x"] = scaler_X
     with open(f'{save_path}_scalers.pkl', 'wb') as file:
@@ -115,6 +116,7 @@ def MLP_train(args):
     
     # Save the model
     torch.save(model.state_dict(), f"{save_path}_model.pth")
+    print(f"Model saved at {save_path}")
 
     # Evaluate the model
     evaluate_classifier_model(model, train_loader, device=device, print_results=True)

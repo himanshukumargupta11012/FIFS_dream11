@@ -1,23 +1,24 @@
 Players,type,player_id,Team,Opposition,date,batting_order,Venue,match_id,Inning
-RA Jadeja,IPL,fe93fd9d,Chennai Super Kings,Mumbai Indians,2025-04-20,4,"Wankhede Stadium, Mumbai",1234567890123,0
-J Overton,IPL,59559bc2,Chennai Super Kings,Mumbai Indians,2025-04-20,7,"Wankhede Stadium, Mumbai",1234567890123,0
-MJ Santner,IPL,e4a0deae,Mumbai Indians,Chennai Super Kings,2025-04-20,7,"Wankhede Stadium, Mumbai",1234567890123,1
-HH Pandya,IPL,dbe50b21,Mumbai Indians,Chennai Super Kings,2025-04-20,5,"Wankhede Stadium, Mumbai",1234567890123,1
-WG Jacks,IPL,9caf69a1,Mumbai Indians,Chennai Super Kings,2025-04-20,2,"Wankhede Stadium, Mumbai",1234567890123,1
-MS Dhoni,IPL,4a8a2e3b,Chennai Super Kings,Mumbai Indians,2025-04-20,8,"Wankhede Stadium, Mumbai",1234567890123,0
-RD Rickelton,IPL,e66732f8,Mumbai Indians,Chennai Super Kings,2025-04-20,1,"Wankhede Stadium, Mumbai",1234567890123,1
-SA Yadav,IPL,271f83cd,Mumbai Indians,Chennai Super Kings,2025-04-20,3,"Wankhede Stadium, Mumbai",1234567890123,1
-V Shankar,IPL,0994d0ae,Chennai Super Kings,Mumbai Indians,2025-04-20,6,"Wankhede Stadium, Mumbai",1234567890123,0
-S Dube,IPL,a4e37e47,Chennai Super Kings,Mumbai Indians,2025-04-20,5,"Wankhede Stadium, Mumbai",1234567890123,0
-R Ravindra,IPL,ba5e1069,Chennai Super Kings,Mumbai Indians,2025-04-20,2,"Wankhede Stadium, Mumbai",1234567890123,0
-Tilak Varma,IPL,b0482a1d,Mumbai Indians,Chennai Super Kings,2025-04-20,4,"Wankhede Stadium, Mumbai",1234567890123,1
-SK Rasheed,IPL,cbf58a86,Chennai Super Kings,Mumbai Indians,2025-04-20,1,"Wankhede Stadium, Mumbai",1234567890123,0
-Naman Dhir,IPL,fffa744b,Mumbai Indians,Chennai Super Kings,2025-04-20,6,"Wankhede Stadium, Mumbai",1234567890123,1
-DL Chahar,IPL,23eeb873,Mumbai Indians,Chennai Super Kings,2025-04-20,8,"Wankhede Stadium, Mumbai",1234567890123,1
-TA Boult,IPL,a818c1be,Mumbai Indians,Chennai Super Kings,2025-04-20,9,"Wankhede Stadium, Mumbai",1234567890123,1
-JJ Bumrah,IPL,462411b3,Mumbai Indians,Chennai Super Kings,2025-04-20,10,"Wankhede Stadium, Mumbai",1234567890123,1
-KK Ahmed,IPL,a2f46292,Chennai Super Kings,Mumbai Indians,2025-04-20,10,"Wankhede Stadium, Mumbai",1234567890123,0
-Noor Ahmad,IPL,efc04be7,Chennai Super Kings,Mumbai Indians,2025-04-20,9,"Wankhede Stadium, Mumbai",1234567890123,0
-M Pathirana,IPL,64839cb3,Chennai Super Kings,Mumbai Indians,2025-04-20,11,"Wankhede Stadium, Mumbai",1234567890123,0
-Ashwani Kumar,IPL,d45c29b1,Mumbai Indians,Chennai Super Kings,2025-04-20,11,"Wankhede Stadium, Mumbai",1234567890123,1
-RG Sharma,IPL,740742ef,Mumbai Indians,Chennai Super Kings,2025-04-20,13,"Wankhede Stadium, Mumbai",1234567890123,1
+SP Narine,IPL,9d430b40,Kolkata Knight Riders,Gujarat Titans,2025-04-21,1,"Eden Gardens, Kolkata",1234567890123,1
+AD Russell,IPL,bbd41817,Kolkata Knight Riders,Gujarat Titans,2025-04-21,6,"Eden Gardens, Kolkata",1234567890123,1
+MM Ali,IPL,bb351c23,Kolkata Knight Riders,Gujarat Titans,2025-04-21,7,"Eden Gardens, Kolkata",1234567890123,1
+R Tewatia,IPL,39a2dfa8,Gujarat Titans,Kolkata Knight Riders,2025-04-21,6,"Eden Gardens, Kolkata",1234567890123,0
+M Shahrukh Khan,IPL,7dcb9bc9,Gujarat Titans,Kolkata Knight Riders,2025-04-21,5,"Eden Gardens, Kolkata",1234567890123,0
+Washington Sundar,IPL,f19ccfad,Gujarat Titans,Kolkata Knight Riders,2025-04-21,8,"Eden Gardens, Kolkata",1234567890123,0
+Ramandeep Singh,IPL,be24ead0,Kolkata Knight Riders,Gujarat Titans,2025-04-21,8,"Eden Gardens, Kolkata",1234567890123,1
+JC Buttler,IPL,99b75528,Gujarat Titans,Kolkata Knight Riders,2025-04-21,3,"Eden Gardens, Kolkata",1234567890123,0
+Rahmanullah Gurbaz,IPL,0bacade8,Kolkata Knight Riders,Gujarat Titans,2025-04-21,2,"Eden Gardens, Kolkata",1234567890123,1
+AM Rahane,IPL,29e95537,Kolkata Knight Riders,Gujarat Titans,2025-04-21,4,"Eden Gardens, Kolkata",1234567890123,1
+VR Iyer,IPL,a24be938,Kolkata Knight Riders,Gujarat Titans,2025-04-21,3,"Eden Gardens, Kolkata",1234567890123,1
+RK Singh,IPL,0a509d6b,Kolkata Knight Riders,Gujarat Titans,2025-04-21,5,"Eden Gardens, Kolkata",1234567890123,1
+Shubman Gill,IPL,b4b99816,Gujarat Titans,Kolkata Knight Riders,2025-04-21,1,"Eden Gardens, Kolkata",1234567890123,0
+SE Rutherford,IPL,d014d5ac,Gujarat Titans,Kolkata Knight Riders,2025-04-21,4,"Eden Gardens, Kolkata",1234567890123,0
+B Sai Sudharsan,IPL,d5130a30,Gujarat Titans,Kolkata Knight Riders,2025-04-21,2,"Eden Gardens, Kolkata",1234567890123,0
+M Prasidh Krishna,IPL,85e0cf10,Gujarat Titans,Kolkata Knight Riders,2025-04-21,11,"Eden Gardens, Kolkata",1234567890123,0
+Rashid Khan,IPL,5f547c8b,Gujarat Titans,Kolkata Knight Riders,2025-04-21,7,"Eden Gardens, Kolkata",1234567890123,0
+Mohammed Siraj,IPL,2f49c897,Gujarat Titans,Kolkata Knight Riders,2025-04-21,10,"Eden Gardens, Kolkata",1234567890123,0
+R Sai Kishore,IPL,c7a995d3,Gujarat Titans,Kolkata Knight Riders,2025-04-21,9,"Eden Gardens, Kolkata",1234567890123,0
+CV Varun,IPL,5b7ab5a9,Kolkata Knight Riders,Gujarat Titans,2025-04-21,11,"Eden Gardens, Kolkata",1234567890123,1
+VG Arora,IPL,7c3b3b78,Kolkata Knight Riders,Gujarat Titans,2025-04-21,10,"Eden Gardens, Kolkata",1234567890123,1
+Harshit Rana,IPL,77b1aa15,Kolkata Knight Riders,Gujarat Titans,2025-04-21,9,"Eden Gardens, Kolkata",1234567890123,1
+A Raghuvanshi,IPL,d7017798,Kolkata Knight Riders,Gujarat Titans,2025-04-21,13,"Eden Gardens, Kolkata",1234567890123,1
